@@ -1,0 +1,142 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+DISPLAY_FB	include/display.h	/^	DISPLAY_FB = 1;$/;"	e	enum:display_type
+DRAW_ERR	include/debug.h	/^	DRAW_ERR = 1;$/;"	e	enum:err_code
+ENCODING_UTF16_BIG	include/file_encoding.h	/^	ENCODING_UTF16_BIG;$/;"	e	enum:encoding_type
+ENCODING_UTF16_L	include/file_encoding.h	/^	ENCODING_UTF16_L;$/;"	e	enum:encoding_type
+ENCODING_UTF8	include/file_encoding.h	/^	ENCODING_UTF8 = 0x11;$/;"	e	enum:encoding_type
+ERR_FONT_NO_OPR	include/debug.h	/^	ERR_FONT_NO_OPR;$/;"	e	enum:err_code
+ERR_PAGE_INVALID	include/debug.h	/^	ERR_PAGE_INVALID;$/;"	e	enum:err_code
+FONT_ASCII	include/font.h	/^	FONT_ASCII = 1;$/;"	e	enum:font_type
+FONT_FREETYPE	include/font.h	/^	FONT_FREETYPE;$/;"	e	enum:font_type
+__DEBUG_H	include/debug.h	2;"	d
+__DISPLAY_H	include/display.h	2;"	d
+__DRAW_H	include/draw.h	2;"	d
+__FILE_ENCODING_H	include/file_encoding.h	2;"	d
+__FONT_H	include/font.h	2;"	d
+angle	font/freetype.c	/^	double angle; \/* 字的角度 *\/$/;"	m	struct:freetype_data	file:
+base_x	include/font.h	/^	int base_x; \/* 字体的原点在lcd上的x y *\/$/;"	m	struct:font_bitmap
+base_y	include/font.h	/^	int base_y;$/;"	m	struct:font_bitmap
+bpp	include/font.h	/^	int bpp; \/*每个像素所占位数*\/$/;"	m	struct:font_bitmap
+buffer	include/font.h	/^	unsigned char *buffer;$/;"	m	struct:font_bitmap
+clean_screen	include/display.h	/^	void (*clean_screen)(struct display_dev *dev, unsigned int color);$/;"	m	struct:display_method
+close	include/display.h	/^	int (*close)(struct display_dev *);$/;"	m	struct:display_method
+current_page	include/draw.h	/^	struct page *current_page;$/;"	m	struct:file_draw	typeref:struct:file_draw::page
+display	include/draw.h	/^	struct display_dev display;$/;"	m	struct:file_draw	typeref:struct:file_draw::display_dev
+display_clean_screen	display/display_core.c	/^void display_clean_screen(struct display_dev *dev, unsigned int color)$/;"	f
+display_close	display/display_core.c	/^int display_close(struct display_dev *dev)$/;"	f
+display_dev	include/display.h	/^struct display_dev {$/;"	s
+display_method	include/display.h	/^struct display_method {$/;"	s
+display_method_list	display/display_core.c	/^struct display_method *display_method_list[] = {$/;"	v	typeref:struct:display_method
+display_method_match	display/display_core.c	/^static struct display_method * display_method_match(enum display_type type)$/;"	f	file:
+display_open	display/display_core.c	/^int display_open(struct display_dev *dev)$/;"	f
+display_set_pixel	display/display_core.c	/^void display_set_pixel(struct display_dev *dev, int x, int y, unsigned int color)$/;"	f
+display_type	include/display.h	/^enum display_type {$/;"	g
+dpi	include/font.h	/^	unsigned int dpi;$/;"	m	struct:font
+draw_exit	draw/draw.c	/^int draw_exit(struct file_draw *draw)$/;"	f
+draw_init	draw/draw.c	/^int draw_init(struct file_draw *draw)$/;"	f
+ebook_debug	include/debug.h	12;"	d
+ebook_err	include/debug.h	4;"	d
+encoding_close	file_encoding/file_encoding.c	/^int encoding_close(struct encoding_file *file)$/;"	f
+encoding_file	include/file_encoding.h	/^struct encoding_file {$/;"	s
+encoding_open	file_encoding/file_encoding.c	/^int encoding_open(struct encoding_file *file, const char *name)$/;"	f
+encoding_operations	include/file_encoding.h	/^struct encoding_operations {$/;"	s
+encoding_opr_list	file_encoding/file_encoding.c	/^static struct encoding_operations *encoding_opr_list[] = {$/;"	v	typeref:struct:encoding_operations	file:
+encoding_type	include/file_encoding.h	/^enum encoding_type {$/;"	g
+err_code	include/debug.h	/^enum err_code {$/;"	g
+exit	include/font.h	/^	void (*exit)(struct font *font);$/;"	m	struct:font_operations
+face	font/freetype.c	/^	FT_Face face;$/;"	m	struct:freetype_data	file:
+fb_clean_screen	display/fb.c	/^void fb_clean_screen(struct display_dev *dev, unsigned int color)$/;"	f
+fb_close	display/fb.c	/^int fb_close(struct display_dev *dev)$/;"	f
+fb_method	display/fb.c	/^struct display_method fb_method = {$/;"	v	typeref:struct:display_method
+fb_open	display/fb.c	/^int fb_open(struct display_dev *dev)$/;"	f
+fb_set_pixel	display/fb.c	/^void fb_set_pixel(struct display_dev *dev, int x, int y, unsigned int color)$/;"	f
+fbmem	include/display.h	/^	void *fbmem;$/;"	m	struct:display_dev
+fd	include/display.h	/^	int fd;$/;"	m	struct:display_dev
+fd	include/file_encoding.h	/^	int fd;$/;"	m	struct:encoding_file
+file	include/draw.h	/^	struct encoding_file file;$/;"	m	struct:file_draw	typeref:struct:file_draw::encoding_file
+file_draw	include/draw.h	/^struct file_draw {$/;"	s
+font	include/draw.h	/^	struct font font;$/;"	m	struct:file_draw	typeref:struct:file_draw::font
+font	include/font.h	/^	struct font *font;$/;"	m	struct:font_bitmap	typeref:struct:font_bitmap::font
+font	include/font.h	/^struct font {$/;"	s
+font_bitmap	include/font.h	/^struct font_bitmap{$/;"	s
+font_exit	font/font_core.c	/^int font_exit(struct font *font)$/;"	f
+font_get_bitmap	font/font_core.c	/^int font_get_bitmap(struct font *font, unsigned int code,$/;"	f
+font_init	font/font_core.c	/^int font_init(struct font *font)$/;"	f
+font_match	font/font_core.c	/^struct font_operations *font_match(enum font_type type)$/;"	f
+font_operations	include/font.h	/^struct font_operations {$/;"	s
+font_operations_list	font/font_core.c	/^static struct font_operations *font_operations_list[] = {$/;"	v	typeref:struct:font_operations	file:
+font_put_bitmap	font/font_core.c	/^int font_put_bitmap(struct font_bitmap *bitmap)$/;"	f
+font_type	include/font.h	/^enum font_type {$/;"	g
+freetype_data	font/freetype.c	/^struct freetype_data {$/;"	s	file:
+freetype_exit	font/freetype.c	/^void freetype_exit(struct font *font)$/;"	f
+freetype_get_bitmap	font/freetype.c	/^int freetype_get_bitmap(struct font *font, unsigned int code,$/;"	f
+freetype_init	font/freetype.c	/^int freetype_init(struct font *font)$/;"	f
+freetype_opr	font/freetype.c	/^struct font_operations freetype_opr = {$/;"	v	typeref:struct:font_operations
+freetype_put_bitmap	font/freetype.c	/^int freetype_put_bitmap(struct font_bitmap *bitmap)$/;"	f
+freetype_setsize	font/freetype.c	/^int freetype_setsize(struct font *font)$/;"	f
+get_bitmap	include/font.h	/^	int (*get_bitmap)(struct font *font, unsigned int code,$/;"	m	struct:font_operations
+get_code	file_encoding/file_encoding.c	/^int get_code(struct encoding_file *file, const char **string, int bytes)$/;"	f
+get_code	include/file_encoding.h	/^	int (*get_code)(const char **string, int nbytes);$/;"	m	struct:encoding_operations
+get_page	draw/draw.c	/^struct page *get_page(struct draw *draw, int page_num)$/;"	f
+hori_advance	include/font.h	/^	int hori_advance; \/* 整个字的高 相同size高相同 *\/$/;"	m	struct:font_bitmap
+hori_advance	include/font.h	/^	unsigned int hori_advance; \/* Chinses should *2 *\/$/;"	m	struct:font
+init	include/font.h	/^	int (*init)(struct font *font);$/;"	m	struct:font_operations
+is_support	include/file_encoding.h	/^	int (*is_support)(const char **string, int nbytes);$/;"	m	struct:encoding_operations
+left	include/font.h	/^	int left; \/* 字体在x轴上的偏移 *\/$/;"	m	struct:font_bitmap
+library	font/freetype.c	/^	FT_Library library;$/;"	m	struct:freetype_data	file:
+line_bytes	include/display.h	/^	int line_bytes;$/;"	m	struct:display_dev
+main	main.c	/^int main(int argc, char *argv[])$/;"	f
+matrix	font/freetype.c	/^	FT_Matrix matrix;$/;"	m	struct:freetype_data	file:
+method	include/display.h	/^	struct display_method *method;$/;"	m	struct:display_dev	typeref:struct:display_dev::display_method
+name	include/display.h	/^	const char *name;$/;"	m	struct:display_dev
+next	include/draw.h	/^	struct page *next;$/;"	m	struct:page	typeref:struct:page::page
+next_page	draw/draw.c	/^int next_page(struct draw *draw)$/;"	f
+num	include/draw.h	/^	int num;$/;"	m	struct:page
+open	include/display.h	/^	int (*open)(struct display_dev *);$/;"	m	struct:display_method
+opr	include/file_encoding.h	/^	struct encoding_operations *opr;$/;"	m	struct:encoding_file	typeref:struct:encoding_file::encoding_operations
+opr	include/font.h	/^	struct font_operations *opr;$/;"	m	struct:font	typeref:struct:font::font_operations
+page	include/draw.h	/^struct page {$/;"	s
+pages_head	include/draw.h	/^	struct page *pages_head;$/;"	m	struct:file_draw	typeref:struct:file_draw::page
+pages_scan	draw/draw.c	/^int pages_scan(struct file_draw *draw)$/;"	f
+path	include/draw.h	/^	char *path;$/;"	m	struct:file_draw
+path	include/font.h	/^	const char *path;$/;"	m	struct:font
+pen	font/freetype.c	/^	FT_Vector pen;$/;"	m	struct:freetype_data	file:
+per_page	draw/draw.c	/^int per_page(struct draw *draw)$/;"	f
+pitch	include/font.h	/^	int pitch; \/* 对于单色位图表示两行像素之间的跨度单位byte*\/$/;"	m	struct:font_bitmap
+pixel_bytes	include/display.h	/^	int pixel_bytes;$/;"	m	struct:display_dev
+print_usage	main.c	/^void print_usage(char *name)$/;"	f
+private_data	include/font.h	/^	void *private_data;$/;"	m	struct:font
+put_bitmap	include/font.h	/^	int (*put_bitmap)(struct font_bitmap *bitmap);$/;"	m	struct:font_operations
+rows	include/font.h	/^	int rows;  \/\/buffer中描述的行数$/;"	m	struct:font_bitmap
+set_font_size	font/font_core.c	/^int set_font_size(struct font *font, unsigned int size)$/;"	f
+set_pixel	include/display.h	/^	void (*set_pixel)(struct display_dev *dev,int x, int y,$/;"	m	struct:display_method
+set_size	include/font.h	/^	int (*set_size)(struct font *font);$/;"	m	struct:font_operations
+show_characte	draw/draw.c	/^int show_characte(struct file_draw *draw, struct font_bitmap *bitmap,$/;"	f
+show_file	main.c	/^int show_file(int size, char *font, char *file)$/;"	f
+show_page	draw/draw.c	/^int show_page(struct file_draw *draw, int page_num)$/;"	f
+size	include/file_encoding.h	/^	unsigned int size;$/;"	m	struct:encoding_file
+size	include/font.h	/^	unsigned int size;$/;"	m	struct:font
+start	include/draw.h	/^	char *start;$/;"	m	struct:page
+start	include/file_encoding.h	/^	unsigned char *start;$/;"	m	struct:encoding_file
+top	include/font.h	/^	int top; \/* 字体在y轴上的偏移 *\/$/;"	m	struct:font_bitmap
+type	include/display.h	/^	enum display_type type;$/;"	m	struct:display_dev	typeref:enum:display_dev::display_type
+type	include/display.h	/^	enum display_type type;$/;"	m	struct:display_method	typeref:enum:display_method::display_type
+type	include/file_encoding.h	/^	enum encoding_type type;$/;"	m	struct:encoding_file	typeref:enum:encoding_file::encoding_type
+type	include/file_encoding.h	/^	enum encoding_type type;$/;"	m	struct:encoding_operations	typeref:enum:encoding_operations::encoding_type
+type	include/font.h	/^	enum font_type type;$/;"	m	struct:font	typeref:enum:font::font_type
+type	include/font.h	/^	enum font_type type;$/;"	m	struct:font_operations	typeref:enum:font_operations::font_type
+utf8_encoding_opr	file_encoding/file_encoding.c	/^struct encoding_operations utf8_encoding_opr = {$/;"	v	typeref:struct:encoding_operations
+utf8_get_unicode	file_encoding/file_encoding.c	/^unsigned int utf8_get_unicode(const char **string, int nbytes)$/;"	f
+utf8_is_support	file_encoding/file_encoding.c	/^int utf8_is_support(const char **string, int nbytes)$/;"	f
+vert_advance	include/font.h	/^	int vert_advance; \/* 字的x轴 宽 *\/$/;"	m	struct:font_bitmap
+vert_advance	include/font.h	/^	unsigned int vert_advance;$/;"	m	struct:font
+width	include/font.h	/^	int width; \/\/buffe中描述的宽度$/;"	m	struct:font_bitmap
+x	include/font.h	/^	int x; \/*buffer的原点*\/$/;"	m	struct:font_bitmap
+xres	include/display.h	/^	int xres;$/;"	m	struct:display_dev
+y	include/font.h	/^	int y;$/;"	m	struct:font_bitmap
+yres	include/display.h	/^	int yres;$/;"	m	struct:display_dev
