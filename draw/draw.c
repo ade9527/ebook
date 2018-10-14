@@ -187,19 +187,26 @@ int show_characte(struct file_draw *draw, struct font_bitmap *bitmap,
 {
 	int draw_x;
 	int draw_y;
-	int x_max;
-	int y_max;
 
 	struct display_dev *display = &draw->display;
 	int color;
 	int i,j;
 
+	draw_x = x + bitmap->dx;
+	draw_y = y + bitmap->dy;
+
+	x_max = draw_x + bitmap->width;
+	y_max = draw_y + bitmap->rows;
+
 	/* determine the draw origin*/
 
-	for (i = 0; draw_x < x_max; i++, draw_x++) {
-		for (j = 0; draw_y < y_max; j++, draw_y++) {
-			color = bitmap->buffer[j*bitmap->width + i];
-			display->method->set_pixel(display, i, j, color);
+	for (i = 0; i < bitmap->width; i++) {
+		for (j = 0; j < rows; j++) {
+			int pen_x = draw_x + i;
+			int pen_y = draw_y + j;
+			// font color is not correct
+			color = bitmap->buffer[(j*bitmap->width + i)*bitmap->bpp / 8];
+			display->method->set_pixel(display, pen_x, pen_y, color);
 		}
 	}
 
@@ -274,6 +281,8 @@ int show_page(struct file_draw *draw, int page_num)
 		/* show font */
 		show_characte(draw, bitmap, x, y);
 		x += bitmap.hori_advance;
+
+		font_put_bitmap(bitmap);
 
 		/* test vertical advance */
 		if (bitmap->vert_advance != font_vert) {

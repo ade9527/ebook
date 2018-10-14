@@ -83,16 +83,16 @@ int freetype_get_bitmap(struct font *font, unsigned int code,
 	bitmap->buffer = slot->bitmap.buffer;
 	bitmap->width = slot->bitmap.width;
 	bitmap->rows = slot->bitmap.rows;
-	bitmap->advance_x = slot->advance.x;
-	bitmap->advance_y = slot->advance.y;
-	bitmap->vert_advance = (slot->linearVertAdvance + 65535) / 65536;
-	bitmap->hori_advance = (slot->linearHoriAdvance + 65535) / 65536;
-	/* 应为原点设置为(0,0) */
-	bitmap->left = slot->bitmap_left; /**/
-	bitmap->top = -slot->bitmap_top;
-	bitmap->x = bitmap->base_x + bitmap->left;
-	bitmap->y = bitmap->base_y + bitmap->top;
-	bitmap->bpp = 8;
+//	bitmap->vert_advance = (slot->linearVertAdvance + 65535) / 65536;
+//	bitmap->hori_advance = (slot->linearHoriAdvance + 65535) / 65536;
+	bitmap->vert_advance = (slot->metrics.vertAdvance + 63) / 64;
+	bitmap->hori_advance = (slot->metrics.horiAdvance + 63) / 64;
+	/* 原点设置的是(0,0) */
+	//字体顶端可能最大距离是 vert_advance的 75/88
+	int y = bitmap->vert_advance * 75 / 88;
+	bitmap->delta_x = 0 + slot->metrics.horiBearingX;
+	bitmap->delta_y = y - slot->metrice.horiBearingY;
+	bitmap->bpp = 8; // use Grayscale
 	bitmap->pitch = bitmap->width * 1;
 
 	return 0;
