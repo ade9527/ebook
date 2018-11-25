@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <draw.h>
 
 void print_usage(char *name)
 {
@@ -12,6 +13,8 @@ int main(int argc, char *argv[])
 	char *font;
 	char *file;
 	int ret;
+
+	struct draw
 
 	if (argc != 4)
 		print_usage(argv[0]);

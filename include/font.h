@@ -2,8 +2,8 @@
 #define __FONT_H
 
 enum font_type {
-	FONT_ASCII = 1;
-	FONT_FREETYPE;
+	FONT_ASCII = 1,
+	FONT_FREETYPE
 };
 
 struct font {
@@ -12,10 +12,24 @@ struct font {
 	unsigned int size;
 	unsigned int dpi;
 	unsigned int vert_advance;
-	unsigned int hori_advance; /* Chinses should *2 */
+	unsigned int hori_advance; /* Chinses should *2 */
 	void *private_data;
 	struct font_operations *opr;
 };
+
+struct font_bitmap{
+	unsigned char *buffer;
+	int width; //buffe中描述的宽度
+	int rows;  //buffer中描述的行数
+	unsigned int delta_x; /*buffer的绘制点相对左上角的偏移*/
+	unsigned int delta_y;
+	unsigned int vert_advance; /* 字的x轴 宽 */
+	unsigned int hori_advance; /* 整个字的高 相同size高相同 */
+	int pitch; /* 对于单色位图表示两行像素之间的跨度单位byte*/
+	int bpp; /*每个像素所占位数*/
+	struct font *font;
+};
+
 
 struct font_operations {
 	enum font_type type;
@@ -26,21 +40,6 @@ struct font_operations {
 	int (*put_bitmap)(struct font_bitmap *bitmap);
 	int (*set_size)(struct font *font);
 };
-
-
-struct font_bitmap{
-	unsigned char *buffer;
-	int width; //buffe中描述的宽度
-	int rows;  //buffer中描述的行数
-	unsigned int dx; /*buffer的绘制点相对左上角的偏移*/
-	unsigned int dy;
-	unsigned int vert_advance; /* 字的x轴 宽 */
-	unsigned int hori_advance; /* 整个字的高 相同size高相同 */
-	int pitch; /* 对于单色位图表示两行像素之间的跨度单位byte*/
-	int bpp; /*每个像素所占位数*/
-	struct font *font;
-};
-
 
 
 int font_init(struct font *font);

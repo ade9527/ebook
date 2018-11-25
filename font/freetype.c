@@ -19,10 +19,10 @@ int freetype_init(struct font *font)
 	
 	data = malloc(sizeof(*data));
 	if (!data)
-		return -ENOMEM;
+		return -1;// -ENOMEM;
 	memset(data, 0, sizeof(*data));
 
-	font->private_data;
+	font->private_data = data;
 
 
 /* init and set freetype */
@@ -91,7 +91,7 @@ int freetype_get_bitmap(struct font *font, unsigned int code,
 	//字体顶端可能最大距离是 vert_advance的 75/88
 	int y = bitmap->vert_advance * 75 / 88;
 	bitmap->delta_x = 0 + slot->metrics.horiBearingX;
-	bitmap->delta_y = y - slot->metrice.horiBearingY;
+	bitmap->delta_y = y - slot->metrics.horiBearingY;
 	bitmap->bpp = 8; // use Grayscale
 	bitmap->pitch = bitmap->width * 1;
 
@@ -101,7 +101,7 @@ int freetype_get_bitmap(struct font *font, unsigned int code,
 int freetype_put_bitmap(struct font_bitmap *bitmap)
 {
 	/*释放 bitmap 的buffer?*/
-FT_Done_Glyph
+//FT_Done_Glyph
 	return 0;
 }
 
@@ -116,7 +116,7 @@ int freetype_setsize(struct font *font)
 		return -1;
 	}
 
-	error = FT_Load_Char(font->face, 'A', FT_LOAD_RENDER);
+	error = FT_Load_Char(data->face, 'A', FT_LOAD_RENDER);
 	if (error != 0) {
 		printf("freetype set size ,get advance failed, error:%d\n",
 				error);
@@ -124,9 +124,9 @@ int freetype_setsize(struct font *font)
 		font->hori_advance = 0;
 		return -2;
 	}
-	font->vert_advance = (font->face->glyph->linearVertAdvance + 65535)
+	font->vert_advance = (data->face->glyph->linearVertAdvance + 65535)
 					/ 65536;
-	font->hori_advance = (font->face->glyph->linearHoriAdvance + 65535)
+	font->hori_advance = (data->face->glyph->linearHoriAdvance + 65535)
 					/ 65536;
 	return 0;
 }
@@ -138,11 +138,11 @@ int freetype_setsize(struct font *font)
 
 
 struct font_operations freetype_opr = {
-	.font_type	= FONT_FREETYPE;
-	.init		= freetype_init;
-	.exit		= freetype_exit;
-	.get_bitmap	= freetype_get_bitmap;
-	.put_bitmap	= freetype_put_bitmap;
-	.set_size	= freetype_setsize;
+	.type	= FONT_FREETYPE,
+	.init		= freetype_init,
+	.exit		= freetype_exit,
+	.get_bitmap	= freetype_get_bitmap,
+	.put_bitmap	= freetype_put_bitmap,
+	.set_size	= freetype_setsize,
 };
 

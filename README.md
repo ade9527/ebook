@@ -8,3 +8,8 @@
   font_manager (ascii, hzk16, freetyp)
 3.点阵显示
   display_manager (framebuffer, bga ...)
+
+## build
+
+cmake
+make
